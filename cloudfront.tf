@@ -48,23 +48,3 @@ resource "aws_cloudfront_distribution" "website" {
     Name = "${var.project_name}-cloudfront"
   }
 }
-
-/* 
-enabled = true - Enables the distribution.
-default_root_object  - Serves index.html when someone visits the root URL.
-price_class  - Limits the CloudFront edge locations used, helping manage costs.
-is_ipv6_enabled	- Supports IPv6 visitors.
-origin	- Tells CloudFront where the website files are stored.
-origin_access_control_id - Connects CloudFront to your OAC.
-redirect-to-https - Redirects HTTP visitors to HTTPS.
-allowed_methods	- Allows visitors to retrieve website content using GET and HEAD.
-compress - Enables automatic compression of supported content.
-cache_policy_id	- Uses AWS's managed CachingOptimized policy. 
-
-(The cache policy ID above is AWS's managed CachingOptimized policy,
-It is not something you need to create yourself.)
-
-why use "bucket_regional_domain_name" :
-- We use the normal S3 bucket endpoint, not the S3 static website endpoint.
-- That's important because OAC works with normal S3 origins, not S3 website endpoints.
-*/
